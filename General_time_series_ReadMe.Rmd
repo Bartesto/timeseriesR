@@ -11,3 +11,5 @@ The work contained here forms the basis of time series analysis tools developed 
 2. that missing values have been interpolated to create a regular time series
 3. there is a "date" column
 4. that all unique site values are in separate columns
+
+These functions, tools and scripts are the tested and documented versions for distribution to the group. Trial versions and workings are contained in the time_series_dev repository linked to the time_series_dev folder located at Z:\DOCUMENTATION\BART\R\R_DEV.
