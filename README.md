@@ -1,9 +1,4 @@
----
-title: "timeseriesR ReadMe"
-author: "Bart Huntley"
-date: "Monday, May 26, 2015"
-output: html_document
----
+# timeseriesR
 
 The work contained here forms the basis of time series analysis tools developed for the Remote Sensing and Spatial Analysis section. **Unless stated otherwise** in the header notes of the various function scripts, the starting data set must be a data frame created from using the **mtsd.r** script. The running of this script ensures that the data frame is in the correct format, namely:
 
