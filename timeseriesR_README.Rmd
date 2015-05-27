@@ -1,5 +1,5 @@
 ---
-title: "Time Series ReadMe"
+title: "timeseriesR ReadMe"
 author: "Bart Huntley"
 date: "Monday, May 25, 2015"
 output: html_document
