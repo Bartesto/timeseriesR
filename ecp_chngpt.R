@@ -78,12 +78,11 @@ ecp_chgpt <- function(dir, csv, sig, survey, out){
                         geom_vline(data=ecpdf, aes(xintercept=x, linetype="Break \nPoints"),
                                    colour = "red", show_guide=TRUE)+
                         geom_line(aes(x,y), colour='blue', linetype=4, size = 0.5, vertdf)+
-                        coord_cartesian(ylim = c(-10, 80))+
+                        coord_cartesian(ylim = c(-10, 110))+
                         theme_bw()+
                         xlab("")+
                         ylab("Vegetation Cover %")+
-                        annotate("text", min(df2.i[,1])+1000, 75, label = paste0("Site-",sname[i]),
-                                 size=6)+
+                        ggtitle(paste0("Site ", sname[i]))+
                         theme(legend.title = element_blank(),
                               axis.title.y = element_text(size=15),
                               axis.text.y = element_text(angle=90, size=15),
