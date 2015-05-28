@@ -13,10 +13,10 @@ csv="Bernier_Dorre_mtsd.csv"
 sig=0.002
 out=".pdf"
 survey="1998-09-01"
+project="TEC"
 
 
-
-ecp_chgpt <- function(dir, csv, sig, survey, out){
+ecp_chgpt <- function(dir, csv, sig, survey, out, project){
         
         is_installed <- function(mypkg) is.element(mypkg, installed.packages()[,1])
         load_or_install<-function(package_names)  
@@ -40,7 +40,7 @@ ecp_chgpt <- function(dir, csv, sig, survey, out){
         df[,1] <- as.Date(df[,1])
         
         sname <- names(df)[-1]
-        folder <- paste0("ts-ECP-chgpt-graphs-", Sys.Date())
+        folder <- paste0(project, "-ts-ECP-chgpt-graphs-", Sys.Date())
         if(!file.exists(folder)){ dir.create(folder)}
         setwd(paste(dir,folder, sep="\\"))
 
@@ -65,7 +65,7 @@ ecp_chgpt <- function(dir, csv, sig, survey, out){
                 
                 #dates of chgpts
                 ecpdf <- data.frame(x=indexer(), label=rep("Break Points", length(indexer())))
-                date <- as.character(as.Date(indexer()))
+                #date <- as.character(as.Date(indexer()))
                 
                 
                 #df for vertical line handling
@@ -97,4 +97,4 @@ ecp_chgpt <- function(dir, csv, sig, survey, out){
         }
 }
 
-ecp_chgpt(dir, csv, sig, survey, out)
+ecp_chgpt(dir, csv, sig, survey, out, project)
