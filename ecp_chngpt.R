@@ -16,6 +16,7 @@ survey="1998-09-01"
 project="TEC"
 
 
+
 ecp_chgpt <- function(dir, csv, sig, survey, out, project){
         
         is_installed <- function(mypkg) is.element(mypkg, installed.packages()[,1])
@@ -36,10 +37,12 @@ ecp_chgpt <- function(dir, csv, sig, survey, out, project){
         ##Generic tasks
         setwd(dir)
         df <- read.csv(csv, header = TRUE)
+        df_name <- read.csv(csv, header = TRUE, check.names = FALSE)
         df <- df[,-1]
         df[,1] <- as.Date(df[,1])
         
         sname <- names(df)[-1]
+        titles <- names(df_name)[c(-1,-2)]
         folder <- paste0(project, "-ts-ECP-chgpt-graphs-", Sys.Date())
         if(!file.exists(folder)){ dir.create(folder)}
         setwd(paste(dir,folder, sep="\\"))
@@ -65,7 +68,7 @@ ecp_chgpt <- function(dir, csv, sig, survey, out, project){
                 
                 #dates of chgpts
                 ecpdf <- data.frame(x=indexer(), label=rep("Break Points", length(indexer())))
-                #date <- as.character(as.Date(indexer()))
+                date <- as.character(as.Date(indexer()))
                 
                 
                 #df for vertical line handling
@@ -82,7 +85,7 @@ ecp_chgpt <- function(dir, csv, sig, survey, out, project){
                         theme_bw()+
                         xlab("")+
                         ylab("Vegetation Cover %")+
-                        ggtitle(paste0("Site ", sname[i]))+
+                        ggtitle(paste0("Site ", titles[i]))+
                         theme(legend.title = element_blank(),
                               axis.title.y = element_text(size=15),
                               axis.text.y = element_text(angle=90, size=15),
@@ -90,8 +93,8 @@ ecp_chgpt <- function(dir, csv, sig, survey, out, project){
                               legend.text = element_text(size = 10))
                 
                 
-                sname.i<-sname[i]
-                filename<-paste0(sname.i, "-ECP-chgpt-plot",out)
+                titles.i<-titles[i]
+                filename<-paste0(titles.i, "-ECP-chgpt-plot",out)
 
                 ggsave(file=filename, p, width = 22.5, height = 13.5, units = "cm")
         }
